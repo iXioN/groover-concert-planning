@@ -38,12 +38,12 @@ class IsProgrammationPossibleTests(unittest.TestCase):
         """
         given a list of 3 length where sum is lower than the concert_premiere_length
         when I call is_programation_possible with this list and concert_premiere_length
-        Then i get a True
+        Then i get a False, this is impossible to fill concert_premiere_length with all tacks
         """
         concert_premiere_length = 7
         track_lenghts = (1, 2, 3)
         is_possible = is_programation_possible(concert_premiere_length, track_lenghts)
-        self.assertTrue(is_possible)
+        self.assertFalse(is_possible)
 
     def test_track_len_sum_equal_to_concert_premier(self):
         """
