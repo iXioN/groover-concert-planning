@@ -1,5 +1,6 @@
 import unittest
-from concert_prog import is_programation_possible, combinations
+
+from concert_prog import combinations, is_programation_possible
 
 
 class CombinationsTests(unittest.TestCase):
@@ -67,7 +68,7 @@ class IsProgrammationPossibleTests(unittest.TestCase):
         is_possible = is_programation_possible(concert_premiere_length, track_lenghts)
         self.assertFalse(is_possible)
 
-    def test_tracks_fit_the_programation(self):
+    def test_tracks_fit_the_programation_with_3(self):
         """
         given a list of 4 length where the sum of 3 of them are equal to the concert_premiere_length
         when I call is_programation_possible with this list and concert_premiere_length
@@ -76,6 +77,19 @@ class IsProgrammationPossibleTests(unittest.TestCase):
         concert_premiere_length = 9
         track_lenghts = (2, 5, 6, 7, 3, 4, 8)
         is_possible = is_programation_possible(concert_premiere_length, track_lenghts)
+        self.assertTrue(is_possible)
+
+    def test_tracks_fit_the_programation_(self):
+        """
+        given a list of 4 length where the sum of 3 of them are equal to the concert_premiere_length
+        when I call is_programation_possible with this list and concert_premiere_length
+        Then i get a True
+        """
+        concert_premiere_length = 14
+        track_lenghts = (8, 1, 2, 3, 5, 6, 8)
+        is_possible = is_programation_possible(
+            concert_premiere_length, track_lenghts, limit_number_of_tracks=False
+        )
         self.assertTrue(is_possible)
 
 
