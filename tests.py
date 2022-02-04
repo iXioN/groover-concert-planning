@@ -70,7 +70,7 @@ class IsProgrammationPossibleTests(unittest.TestCase):
 
     def test_tracks_fit_the_programation_with_3(self):
         """
-        given a list of 4 length where the sum of 3 of them are equal to the concert_premiere_length
+        given a list of 7 length where the sum of 3 of them are equal to the concert_premiere_length
         when I call is_programation_possible with this list and concert_premiere_length
         Then i get a True
         """
@@ -81,14 +81,27 @@ class IsProgrammationPossibleTests(unittest.TestCase):
 
     def test_tracks_fit_the_programation_(self):
         """
-        given a list of 4 length where the sum of 3 of them are equal to the concert_premiere_length
-        when I call is_programation_possible with this list and concert_premiere_length
+        given a list of 7 length where the sum of 2 of them are equal to the concert_premiere_length
+        when I call is_programation_possible with this list and concert_premiere_length and disable the limiting number of tracks
         Then i get a True
         """
         concert_premiere_length = 14
         track_lenghts = (8, 1, 2, 3, 5, 6, 8)
         is_possible = is_programation_possible(
             concert_premiere_length, track_lenghts, limit_number_of_tracks=False
+        )
+        self.assertTrue(is_possible)
+
+    def test_tracks_fit_the_programation_with_3_with_tolerence(self):
+        """
+        given a list of 7 length where the sum of 3 of them are almost equals to the concert_premiere_length (with a 5 tolerence)
+        when I call is_programation_possible with this list and concert_premiere_length with a tolerence set to 5
+        Then i get a True
+        """
+        concert_premiere_length = 20
+        track_lenghts = (6, 7, 8, 10, 9)
+        is_possible = is_programation_possible(
+            concert_premiere_length, track_lenghts, tolerence=5
         )
         self.assertTrue(is_possible)
 
